@@ -3,14 +3,9 @@
 A new Flutter project.
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
+iew the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Description 
+This simple Flutter app allows users to calculate their Body Mass Index (BMI) by adjusting their weight and age using "+" and "-" buttons , users can conveniently modify their weight and age, and the app calculates and displays the BMI along with the corresponding health category (e.g., underweight, normal weight, overweight, etc.).
