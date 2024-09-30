@@ -1,368 +1,209 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:testingapp/result.dart';
+import 'package:testingapp/components/icondata.dart';
+import 'package:testingapp/constants/colors.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:testingapp/constants/style.dart';
+
+import 'components/reusable.dart';
+import 'components/roundbutton.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    home: Home(),
+  runApp(MaterialApp(
+    home: New(),
   ));
 }
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class New extends StatefulWidget {
+  New({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<New> createState() => _NewState();
 }
 
-class _HomeState extends State<Home> {
-  int age = 30; //age by default
-  int weight = 78; //age by default
-  double height = 175; //age by default
-  bool isMale = true;
+class _NewState extends State<New> {
+  double height = 190;
+  int age = 30;
+  int weight = 78;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(s
-      //   title: Text(
-      //     'BMI CALCULATOR',
-      //     style: TextStyle(
-      //       color: Colors.white24,
-      //     ),
-      //   ),
-      // ),
-      backgroundColor: Color(0xff060918),
-
+      backgroundColor: kPrimarColor,
+      appBar: AppBar(
+        backgroundColor: kPrimarColor,
+        centerTitle: true,
+        title: Text(
+          'BMI CALCULATOR',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        elevation: 10,
+      ),
       body: Container(
-        margin: EdgeInsets.only(top: 30, left: 20, right: 20),
-        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.symmetric(
+          horizontal: 10,
+        ),
         child: Column(
           children: [
-            //title ka bmi
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(top: 20),
-                  child: Text(
-                    // textAlign: TextAlign.right,
-                    'BMI CALCULATOR',
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.white54,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            //the two containers // age
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  // margin: EdgeInsets.only(right: 30),
-
-                  decoration: BoxDecoration(
-                    color: Color(
-                      0xff151829,
-                    ),
-                    borderRadius: BorderRadius.circular(
-                      20,
-                    ),
-                  ),
-                  padding: EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Age',
-                        style: TextStyle(
-                          color: const Color.fromRGBO(255, 255, 255, 1),
-                          fontSize: 18,
-                        ),
-                      ),
-                      Text(
-                        '$age',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 75,
-                        ),
-                      ),
-                      //+ and - buttons
-                      Row(
-                        children: [
-                          // minus button -
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Color(
-                                0xff2E3140,
-                              ),
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  if (age > 10) age--;
-                                });
-                              },
-                              icon: Icon(
-                                Icons.remove,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          // plus button +
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Color(
-                                0xff2E3140,
-                              ),
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  age++;
-                                });
-                              },
-                              icon: Icon(
-                                Icons.add,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-
-                // weight button ka
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color(
-                      0xff151829,
-                    ),
-                    borderRadius: BorderRadius.circular(
-                      20,
-                    ),
-                  ),
-                  padding:
-                      EdgeInsets.only(top: 15, left: 20, right: 20, bottom: 15),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Weight',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      ),
-                      Text(
-                        '$weight',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 75,
-                        ),
-                      ),
-                      //+ and - buttons
-                      Row(
-                        children: [
-                          // minus button -
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Color(
-                                0xff2E3140,
-                              ),
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  if (weight > 30) weight--;
-                                });
-                              },
-                              icon: Icon(
-                                Icons.remove,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                          // plus button +
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Color(
-                                0xff2E3140,
-                              ),
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  weight++;
-                                });
-                              },
-                              icon: Icon(
-                                Icons.add,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 12,
-            ),
-            Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Color(
-                  0xff151829,
-                ),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
+            Expanded(
+              child: Row(
                 children: [
-                  Text(
-                    'Height (CM)',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  Text(
-                    '${height.toInt()}',
-                    style: TextStyle(
-                      fontSize: 75,
-                      color: Colors.white,
+                  // 1
+                  Expanded(
+                    child: ReusableContainer(
+                      Child: IconContent(
+                        iconData: FontAwesomeIcons.mars,
+                        title: 'MALE',
+                      ),
                     ),
                   ),
-                  Slider(
-                      value: height,
-                      min: 100,
-                      max: 300,
-                      divisions: 200,
-                      activeColor: Color(0xff0054D1),
-                      inactiveColor: Color(0xff0054D1),
-                      label: height.round().toString(),
-                      onChanged: (double value) {
-                        setState(() {
-                          height = value;
-                        });
-                      }),
-                  Container(
-                    margin: EdgeInsets.only(left: 10, right: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //2
+                  Expanded(
+                    child: ReusableContainer(
+                      Child: IconContent(
+                        iconData: FontAwesomeIcons.venus,
+                        title: 'FEMALE',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: ReusableContainer(
+                Child: Column(
+                  children: [
+                    Text(
+                      'HEIGHT',
+                      style: kTextStyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
                       children: [
                         Text(
-                          ' 100 CM',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: Colors.white,
-                          ),
+                          height.round().toString(),
+                          style: kTextStyleHeight,
                         ),
                         Text(
-                          '300 CM',
+                          'cm',
                           style: TextStyle(
-                            fontSize: 17,
                             color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w300,
                           ),
                         ),
                       ],
                     ),
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 12,
-            ),
-            Container(
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Color(
-                  0xff151829,
+                    SliderTheme(
+                      data: SliderThemeData(
+                        activeTrackColor: Colors.grey,
+                        inactiveTrackColor: Colors.grey,
+                        thumbColor: kButton,
+                        thumbShape: RoundSliderThumbShape(
+                          enabledThumbRadius: 16,
+                        ),
+                      ),
+                      child: Slider(
+                        value: height,
+                        min: 90,
+                        max: 300,
+                        onChanged: (double newVal) {
+                          setState(() {
+                            height = newVal;
+                          });
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-                borderRadius: BorderRadius.circular(20),
               ),
-              child: Column(
+            ),
+            Expanded(
+              child: Row(
                 children: [
-                  Text(
-                    'Sex',
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+                  // 1
+                  Expanded(
+                    child: ReusableContainer(
+                      Child: Column(
+                        children: [
+                          Text(
+                            'Weight',
+                            style: kTextStyle,
+                          ),
+                          Text(
+                            '$weight',
+                            style: kAgeWeight,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              roundbutton(
+                                Onpressed: () {
+                                  setState(() {
+                                    if (weight > 30) --weight;
+                                  });
+                                },
+                                icons: Icons.remove,
+                              ),
+                              roundbutton(
+                                Onpressed: () {
+                                  setState(() {
+                                    weight++;
+                                  });
+                                },
+                                icons: Icons.add,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        'Male',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                  //2
+                  Expanded(
+                    child: ReusableContainer(
+                      Child: Column(
+                        children: [
+                          Text(
+                            'Age',
+                            style: kTextStyle,
+                          ),
+                          Text(
+                            '$age',
+                            style: kAgeWeight,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              roundbutton(
+                                Onpressed: () {
+                                  setState(() {
+                                    if (age > 0) --age;
+                                  });
+                                },
+                                icons: Icons.remove,
+                              ),
+                              roundbutton(
+                                Onpressed: () {
+                                  setState(() {
+                                    age++;
+                                  });
+                                },
+                                icons: Icons.add,
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                      Expanded(
-                        child: Switch(
-                          value: isMale,
-                          inactiveThumbColor: Colors.blue,
-                          inactiveTrackColor: Colors.grey,
-                          // trackOutlineWidth: ,
-                          onChanged: (bool value) {
-                            setState(() {
-                              isMale = value;
-                            });
-                          },
-                        ),
-                      ),
-                      Text(
-                        'Female',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                    ],
-                  )
+                    ),
+                  ),
                 ],
               ),
-            ),
-            SizedBox(
-              height: 12,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xff0054D1),
-                      padding: EdgeInsets.all(10),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Result(
-                            age_: age,
-                            height_: height,
-                            weight_: weight,
-                            isMale_: isMale,
-                          ),
-                        ),
-                      );
-                    },
-                    child: Text(
-                      'CALCULATE BMI',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  ),
-                ),
-              ],
             ),
           ],
         ),
