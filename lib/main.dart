@@ -5,7 +5,6 @@ import 'package:testingapp/components/icondata.dart';
 import 'package:testingapp/constants/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:testingapp/constants/style.dart';
-
 import 'components/reusable.dart';
 import 'components/roundbutton.dart';
 
